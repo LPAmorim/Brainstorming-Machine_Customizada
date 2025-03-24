@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora</title>    
+</head>
+  <style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .container {
+        width: 100vw;
+        height: 100vh;
+        background: #156e9e;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .box {
+        width: 320px;
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+        padding: 20px;
+        text-align: center;
+    }
+
+    h1 {
+        margin-bottom: 10px;
+    }
+
+    input, button {
+        margin: 5px 0;
+    }
+
+    .result {
+        margin-top: 15px;
+    }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="box">
+    <h1>SpTecher Machine</h1>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQHMiwTsAIijTMi-YZTVWujtznBG7ps4aK-vw&s" alt="logo">
+    <p>Digite um número em decimal: </p>
+    <input type="text" id="ipt_numero">
+    <br><br>
+    <p>Escolha as opções que gostaria de converter (pode selecionar mais de uma)</p>
+    <span>Octal </span>
+    <input type="checkbox" id="ipt_octal" ><br>
+    <span>Hexadecimal </span>
+    <input type="checkbox" id="ipt_hex" ><br>
+    <span>Binário </span>
+    <input type="checkbox" id="ipt_binario" ><br>
+    <br><br>
+    <button onclick="Converter()">Converter</button>
+    <div id="div_resultado"></div>
+    <div id ='div_historico'></div>
+    </div>
+    </div>
+</body>
+</html>
+<script>
+ function Converter() {
+    var numero = Number(ipt_numero.value);
+    var octal = ipt_octal.checked;
+    var hexadecimal = ipt_hex.checked;
+    var binario = ipt_binario.checked;
+    var resultado = "";
+
+    if (octal) {
+        resultado += `<p>🔢 Octal: ${numero.toString(8)}</p>`;
+    }
+
+    if (hexadecimal) {
+        resultado += `<p>🔠 Hexadecimal: ${numero.toString(16).toUpperCase()}</p>`;
+    }
+
+    if (binario) {
+        resultado += `<p>⚡ Binário: ${numero.toString(2)}</p>`;
+    }
+
+    div_resultado.innerHTML = resultado;
+}
+</script>
